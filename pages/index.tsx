@@ -1,115 +1,297 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// Sugar Rosette Home Page
 
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+    <div style={{ 
+      padding: 'var(--sr-space-xl)', 
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, var(--sr-bg) 0%, #F8F0E8 100%)'
+    }}>
+      <main style={{ 
+        maxWidth: '1400px', 
+        margin: '0 auto',
+        position: 'relative'
+      }}>
+        {/* Hero Section */}
+        <section style={{
+          textAlign: 'center',
+          padding: 'var(--sr-space-2xl) 0',
+          position: 'relative'
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: '-50px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '200px',
+            height: '200px',
+            background: 'radial-gradient(circle, var(--sr-sugar-pink) 0%, transparent 70%)',
+            borderRadius: '50%',
+            opacity: 0.3,
+            filter: 'blur(40px)',
+            zIndex: -1
+          }} />
+          
+          <h1 style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+            marginBottom: 'var(--sr-space-lg)', 
+            color: 'var(--sr-ganache)',
+            fontWeight: '800',
+            letterSpacing: '-0.02em',
+            background: 'linear-gradient(135deg, var(--sr-ganache) 0%, var(--sr-cocoa) 50%, var(--sr-berry) 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            Welcome to Sugar Rosette
+          </h1>
+          
+          <p style={{ 
+            fontSize: '1.25rem', 
+            marginBottom: 'var(--sr-space-2xl)', 
+            color: 'var(--sr-cocoa)',
+            maxWidth: '600px',
+            margin: '0 auto var(--sr-space-2xl)',
+            lineHeight: '1.6'
+          }}>
+            Your premium destination for artisanal sweets and delightful treats. 
+            Experience the perfect blend of tradition and innovation in every bite.
+          </p>
+        </section>
+        
+        {/* Feature Cards */}
+        <section style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+          gap: 'var(--sr-space-xl)', 
+          marginTop: 'var(--sr-space-2xl)',
+          position: 'relative'
+        }}>
+          {/* Decorative elements */}
+          <div style={{
+            position: 'absolute',
+            top: '-100px',
+            right: '-100px',
+            width: '300px',
+            height: '300px',
+            background: 'radial-gradient(circle, var(--sr-rosette) 0%, transparent 70%)',
+            borderRadius: '50%',
+            opacity: 0.2,
+            filter: 'blur(60px)',
+            zIndex: -1
+          }} />
+          
+          <div style={{ 
+            padding: 'var(--sr-space-xl)', 
+            background: 'var(--sr-glass-bg)',
+            backdropFilter: 'var(--sr-blur)',
+            WebkitBackdropFilter: 'var(--sr-blur)',
+            borderRadius: 'var(--sr-radius-xl)', 
+            border: '1px solid var(--sr-glass-border)',
+            boxShadow: 'var(--sr-shadow-md)',
+            transition: 'all var(--sr-transition-normal)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '4px',
+              background: 'linear-gradient(90deg, var(--sr-sugar-pink) 0%, var(--sr-rosette) 100%)'
+            }} />
+            <h2 style={{ 
+              color: 'var(--sr-ganache)', 
+              marginBottom: 'var(--sr-space-md)',
+              fontSize: '1.5rem',
+              fontWeight: '600'
+            }}>Our Menu</h2>
+            <p style={{ 
+              color: 'var(--sr-cocoa)',
+              lineHeight: '1.6',
+              marginBottom: 'var(--sr-space-lg)'
+            }}>
+              Explore our carefully crafted selection of artisanal sweets and confections, 
+              each made with love and the finest ingredients.
+            </p>
+            <div style={{
+              display: 'inline-block',
+              padding: 'var(--sr-space-sm) var(--sr-space-md)',
+              background: 'linear-gradient(135deg, var(--sr-blush) 0%, var(--sr-sugar-pink) 100%)',
+              borderRadius: 'var(--sr-radius-full)',
+              fontSize: '0.875rem',
+              fontWeight: '500',
+              color: 'var(--sr-ganache)',
+              transition: 'all var(--sr-transition-normal)',
+              cursor: 'pointer'
+            }}>
+              Explore Menu →
+            </div>
+          </div>
+          
+          <div style={{ 
+            padding: 'var(--sr-space-xl)', 
+            background: 'var(--sr-glass-bg)',
+            backdropFilter: 'var(--sr-blur)',
+            WebkitBackdropFilter: 'var(--sr-blur)',
+            borderRadius: 'var(--sr-radius-xl)', 
+            border: '1px solid var(--sr-glass-border)',
+            boxShadow: 'var(--sr-shadow-md)',
+            transition: 'all var(--sr-transition-normal)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '4px',
+              background: 'linear-gradient(90deg, var(--sr-rosette) 0%, var(--sr-berry) 100%)'
+            }} />
+            <h2 style={{ 
+              color: 'var(--sr-ganache)', 
+              marginBottom: 'var(--sr-space-md)',
+              fontSize: '1.5rem',
+              fontWeight: '600'
+            }}>Special Occasions</h2>
+            <p style={{ 
+              color: 'var(--sr-cocoa)',
+              lineHeight: '1.6',
+              marginBottom: 'var(--sr-space-lg)'
+            }}>
+              Make your celebrations extra sweet with our custom hampers and gift boxes, 
+              designed to create unforgettable moments.
+            </p>
+            <div style={{
+              display: 'inline-block',
+              padding: 'var(--sr-space-sm) var(--sr-space-md)',
+              background: 'linear-gradient(135deg, var(--sr-rosette) 0%, var(--sr-berry) 100%)',
+              borderRadius: 'var(--sr-radius-full)',
+              fontSize: '0.875rem',
+              fontWeight: '500',
+              color: 'white',
+              transition: 'all var(--sr-transition-normal)',
+              cursor: 'pointer'
+            }}>
+              View Occasions →
+            </div>
+          </div>
+          
+          <div style={{ 
+            padding: 'var(--sr-space-xl)', 
+            background: 'var(--sr-glass-bg)',
+            backdropFilter: 'var(--sr-blur)',
+            WebkitBackdropFilter: 'var(--sr-blur)',
+            borderRadius: 'var(--sr-radius-xl)', 
+            border: '1px solid var(--sr-glass-border)',
+            boxShadow: 'var(--sr-shadow-md)',
+            transition: 'all var(--sr-transition-normal)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '4px',
+              background: 'linear-gradient(90deg, var(--sr-caramel) 0%, var(--sr-milk) 100%)'
+            }} />
+            <h2 style={{ 
+              color: 'var(--sr-ganache)', 
+              marginBottom: 'var(--sr-space-md)',
+              fontSize: '1.5rem',
+              fontWeight: '600'
+            }}>Corporate Gifting</h2>
+            <p style={{ 
+              color: 'var(--sr-cocoa)',
+              lineHeight: '1.6',
+              marginBottom: 'var(--sr-space-lg)'
+            }}>
+              Impress your clients and team with our premium corporate gifting solutions, 
+              tailored to your brand and occasion.
+            </p>
+            <div style={{
+              display: 'inline-block',
+              padding: 'var(--sr-space-sm) var(--sr-space-md)',
+              background: 'linear-gradient(135deg, var(--sr-caramel) 0%, var(--sr-milk) 100%)',
+              borderRadius: 'var(--sr-radius-full)',
+              fontSize: '0.875rem',
+              fontWeight: '500',
+              color: 'white',
+              transition: 'all var(--sr-transition-normal)',
+              cursor: 'pointer'
+            }}>
+              Learn More →
+            </div>
+          </div>
+        </section>
+        
+        {/* Call to Action */}
+        <section style={{ 
+          marginTop: 'var(--sr-space-2xl)', 
+          textAlign: 'center',
+          padding: 'var(--sr-space-2xl)',
+          background: 'var(--sr-glass-bg)',
+          backdropFilter: 'var(--sr-blur)',
+          WebkitBackdropFilter: 'var(--sr-blur)',
+          borderRadius: 'var(--sr-radius-xl)',
+          border: '1px solid var(--sr-glass-border)',
+          boxShadow: 'var(--sr-shadow-md)'
+        }}>
+          <h3 style={{
+            fontSize: '1.5rem',
+            color: 'var(--sr-ganache)',
+            marginBottom: 'var(--sr-space-md)',
+            fontWeight: '600'
+          }}>
+            Ready to Experience Sweet Perfection?
+          </h3>
+          <p style={{ 
+            color: 'var(--sr-cocoa)', 
+            fontSize: '1rem',
+            marginBottom: 'var(--sr-space-lg)',
+            maxWidth: '500px',
+            margin: '0 auto var(--sr-space-lg)',
+            lineHeight: '1.6'
+          }}>
+            Test our modern navigation by exploring the menu items above or using the hamburger menu on mobile.
+          </p>
+          <div style={{
+            display: 'flex',
+            gap: 'var(--sr-space-md)',
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{
+              padding: 'var(--sr-space-md) var(--sr-space-xl)',
+              background: 'linear-gradient(135deg, var(--sr-berry) 0%, var(--sr-rosette) 100%)',
+              borderRadius: 'var(--sr-radius-full)',
+              color: 'white',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all var(--sr-transition-normal)',
+              boxShadow: 'var(--sr-shadow-sm)'
+            }}>
+              Start Shopping
+            </div>
+            <div style={{
+              padding: 'var(--sr-space-md) var(--sr-space-xl)',
+              background: 'transparent',
+              border: '2px solid var(--sr-berry)',
+              borderRadius: 'var(--sr-radius-full)',
+              color: 'var(--sr-berry)',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all var(--sr-transition-normal)'
+            }}>
+              Contact Us
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
