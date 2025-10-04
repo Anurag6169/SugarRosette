@@ -2,6 +2,7 @@
 import React from 'react';
 import TrainCarousel from '@/components/TrainCarousel';
 import Featured from '@/components/Featured';
+import FeaturedDome from '@/components/DomeGallery';
 import styles from '@/styles/Home.module.css';
 
 // Sample train carousel images - in production, these would be actual product images
@@ -55,7 +56,8 @@ export default function Home() {
       {/* Featured Collection Section */}
       <Featured />
 
-      {/* Removed extra demo and duplicate sections below Featured */}
+      {/* Featured Products Dome Gallery */}
+      <FeaturedDome />
     </main>
   );
 }
