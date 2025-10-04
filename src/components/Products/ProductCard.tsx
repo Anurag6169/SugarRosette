@@ -20,14 +20,12 @@ export default function ProductCard({ product }: ProductCardProps) {
     'Corporate': styles.badgeCorporate,
   };
 
+  const whatsappMessage = `Hi!%20I'd%20like%20to%20purchase%20*${encodeURIComponent(product.title)}*%0A%0A${encodeURIComponent(product.shortDesc)}`;
+
   return (
-    <Link 
-      href={`/product/${product.slug}`}
-      className={styles.cardLink}
-      aria-label={`View ${product.title}`}
-    >
-      <article className={styles.card}>
-        {/* Image */}
+    <article className={styles.card}>
+      {/* Image */}
+      <Link href={`/product/${product.slug}`} className={styles.cardImageLink}>
         <div className={styles.cardImage}>
           <Image
             src={product.images[0]}
@@ -45,22 +43,32 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
         </div>
+      </Link>
 
-        {/* Content */}
-        <div className={styles.cardContent}>
-          {/* Title */}
+      {/* Content */}
+      <div className={styles.cardContent}>
+        {/* Title */}
+        <Link href={`/product/${product.slug}`} className={styles.cardTitleLink}>
           <h3 className={styles.cardTitle}>{product.title}</h3>
-          
-          {/* Description */}
-          <p className={styles.cardDescription}>{product.shortDesc}</p>
+        </Link>
+        
+        {/* Description */}
+        <p className={styles.cardDescription}>{product.shortDesc}</p>
 
-          {/* CTA */}
-          <div className={styles.cardCta}>
-            <span className={styles.ctaButton}>View details</span>
-          </div>
+        {/* CTA */}
+        <div className={styles.cardCta}>
+          <a 
+            href={`https://wa.me/918128995138?text=${whatsappMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ctaButton}
+            onClick={(e) => e.stopPropagation()}
+          >
+            Buy Now
+          </a>
         </div>
-      </article>
-    </Link>
+      </div>
+    </article>
   );
 }
 

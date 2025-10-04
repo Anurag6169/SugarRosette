@@ -14,6 +14,8 @@ interface Hamper {
 }
 
 const HamperCard: React.FC<{ hamper: Hamper }> = ({ hamper }) => {
+  const whatsappMessage = `Hi!%20I'd%20like%20to%20purchase%20*${encodeURIComponent(hamper.title)}*%0A%0A${encodeURIComponent(hamper.shortDesc)}`;
+
   return (
     <article className={styles.card} aria-labelledby={`title-${hamper.id}`}>
       <div className={styles.badges}>
@@ -35,12 +37,20 @@ const HamperCard: React.FC<{ hamper: Hamper }> = ({ hamper }) => {
         </div>
       </Link>
       <div className={styles.cardBody}>
-        <h3 id={`title-${hamper.id}`} className={styles.title}>{hamper.title}</h3>
+        <Link href={`/product/${hamper.slug}`} className={styles.titleLink}>
+          <h3 id={`title-${hamper.id}`} className={styles.title}>{hamper.title}</h3>
+        </Link>
         <p className={styles.desc}>{hamper.shortDesc}</p>
         <div className={styles.ctaRow}>
-          <Link href={`/product/${hamper.slug}`} className={`${styles.btn} ${styles.btnPrimary}`} aria-label={`View details for ${hamper.title}`}>
-            View details
-          </Link>
+          <a 
+            href={`https://wa.me/918128995138?text=${whatsappMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.btn} ${styles.btnPrimary}`}
+            aria-label={`Buy ${hamper.title} via WhatsApp`}
+          >
+            Buy Now
+          </a>
         </div>
       </div>
     </article>
