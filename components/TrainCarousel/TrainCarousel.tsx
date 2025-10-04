@@ -41,6 +41,7 @@ const TrainCarousel: React.FC<TrainCarouselProps> = ({
 
   // New: cache item width in pixels to translate one tile per step
   const itemWidthRef = useRef<number>(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [visibleCount, setVisibleCount] = useState<number>(1);
 
   // Utility to compute visible tiles for current breakpoint

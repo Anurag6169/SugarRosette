@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import styles from './Featured.module.css';
 
 interface FeaturedCardProps {
@@ -20,12 +20,12 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
   image,
   description,
   category,
-  index = 0,
+  index = 0, // eslint-disable-line @typescript-eslint/no-unused-vars
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   // Animation variants - no delays for immediate impact
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { 
       opacity: 0, 
       y: 40,
@@ -36,52 +36,48 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.5
       }
     }
   };
 
-  const hoverVariants = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const hoverVariants: Variants = {
     hover: {
-      y: -8,
-      scale: 1.02,
-      rotateY: 2,
+      y: -12,
+      scale: 1.03,
+      rotateY: 3,
       transition: {
-        duration: 0.3,
-        ease: "easeOut"
+        duration: 0.4,
       }
     }
   };
 
-  const imageVariants = {
+  const imageVariants: Variants = {
     hover: {
       scale: 1.1,
       rotate: 1,
       transition: {
         duration: 0.4,
-        ease: "easeOut"
       }
     }
   };
 
-  const contentVariants = {
+  const contentVariants: Variants = {
     hover: {
       y: -4,
       transition: {
         duration: 0.3,
-        ease: "easeOut"
       }
     }
   };
 
-  const shimmerVariants = {
+  const shimmerVariants: Variants = {
     hidden: { x: "-100%" },
     hover: { 
       x: "100%",
       transition: {
         duration: 0.6,
-        ease: "easeInOut"
       }
     }
   };
@@ -150,7 +146,6 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
                 transition={{ 
                   duration: 2, 
                   repeat: Infinity,
-                  ease: "easeInOut"
                 }}
                 style={{ left: '20%', top: '30%' }}
               />
@@ -166,7 +161,6 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
                 transition={{ 
                   duration: 2.5, 
                   repeat: Infinity,
-                  ease: "easeInOut",
                   delay: 0.5
                 }}
                 style={{ right: '25%', top: '60%' }}
@@ -183,7 +177,6 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
                 transition={{ 
                   duration: 3, 
                   repeat: Infinity,
-                  ease: "easeInOut",
                   delay: 1
                 }}
                 style={{ left: '70%', top: '20%' }}
@@ -234,7 +227,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
             transition={{ duration: 0.4 }}
             whileHover={{ 
               scale: 1.05,
-              boxShadow: "0 8px 25px rgba(236, 113, 145, 0.3)"
+              boxShadow: "0 12px 35px rgba(255, 182, 193, 0.4)"
             }}
             whileTap={{ scale: 0.95 }}
           >

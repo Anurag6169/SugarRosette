@@ -1,7 +1,8 @@
 :root {
-  /* Sugar Rosette Brand Colors */
-  --sr-bg: #FBF3EA;
-  --sr-blush: #FFE8EE;
+  /* Sugar Rosette Brand Colors - Enhanced with Bubbly Pink */
+  --sr-bg: #FDF2F7;
+  --sr-blush: #FFE8F0;
+  --sr-bubble-pink: #FFB6C8;
   --sr-sugar-pink: #F7B9C8;
   --sr-rosette: #EC7191;
   --sr-berry: #B83A56;
@@ -9,17 +10,18 @@
   --sr-ganache: #3E2A23;
   --sr-milk: #8A5E49;
   --sr-caramel: #D9A269;
+  --sr-cotton-candy: #FFC0CB;
+  --sr-pink-mist: #FFD1DC;
   
   /* Additional utility colors */
   --sr-surface: #FFFFFF;
-  --sr-border-subtle: #E9D8CB;
-  
-  /* Minimalist design tokens */
-  --sr-surface: #FFFFFF;
   --sr-surface-warm: #FEFCFA;
-  --sr-shadow-soft: 0 6px 18px rgba(236, 113, 145, 0.08);
-  --sr-shadow-elevated: 0 8px 24px rgba(236, 113, 145, 0.12);
-  --sr-border-subtle: #E9D8CB;
+  --sr-border-subtle: #F0D6E1;
+  
+  /* Enhanced bubbly pink design tokens */
+  --sr-shadow-soft: 0 6px 18px rgba(255, 182, 193, 0.12);
+  --sr-shadow-elevated: 0 8px 24px rgba(255, 182, 193, 0.18);
+  --sr-shadow-bubbly: 0 12px 32px rgba(255, 182, 193, 0.15);
   
   /* Spacing */
   --sr-space-xs: 0.25rem;

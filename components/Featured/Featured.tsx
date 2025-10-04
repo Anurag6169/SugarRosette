@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import FeaturedCard from './FeaturedCard';
 import styles from './Featured.module.css';
 
@@ -11,7 +11,7 @@ const featuredData = [
     title: 'Hampers',
     href: '/hampers',
     image: '/hero/slide-1.jpg', // Replace with actual hamper image
-    description: 'Thoughtful assortments for every celebration.',
+    description: 'Thoughtful assortments for every celebration. Curated gift collections featuring our finest chocolates, artisan treats, and elegant packaging. Perfect for birthdays, anniversaries, and special moments that deserve something extraordinary.',
     category: 'Gift Sets'
   },
   {
@@ -19,7 +19,7 @@ const featuredData = [
     title: 'Chocolates',
     href: '/products?filter=chocolates',
     image: '/hero/slide-2.jpg', // Replace with actual chocolate image
-    description: 'Handcrafted bites in classic and bold flavors.',
+    description: 'Handcrafted bites in classic and bold flavors. From rich dark truffles to creamy milk chocolates, each piece is carefully crafted with premium ingredients and artistic flair that delights the senses.',
     category: 'Artisan'
   },
   {
@@ -27,7 +27,7 @@ const featuredData = [
     title: 'Cakes',
     href: '/products?filter=cakes',
     image: '/hero/slide-1.jpg', // Replace with actual cake image
-    description: 'Celebration cakes, fresh and exquisite.',
+    description: 'Celebration cakes, fresh and exquisite. Custom-designed cakes for every occasion, from intimate gatherings to grand celebrations. Made daily with love and attention to detail.',
     category: 'Specialty'
   },
   {
@@ -35,7 +35,7 @@ const featuredData = [
     title: 'Bakery',
     href: '/products?filter=bakery',
     image: '/hero/slide-2.jpg', // Replace with actual bakery image
-    description: 'Pastries and bakes for everyday joy.',
+    description: 'Pastries and bakes for everyday joy. Fresh-baked croissants, artisanal breads, and seasonal treats that bring warmth and comfort to your daily moments with authentic flavors.',
     category: 'Fresh'
   }
 ];
@@ -43,34 +43,33 @@ const featuredData = [
 const Featured: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
-  const headerVariants = {
+  const headerVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
         staggerChildren: 0.1
       }
     }
   };
 
-  const titleVariants = {
+  const titleVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.4, ease: "easeOut" }
+      transition: { duration: 0.4 }
     }
   };
 
-  const subtitleVariants = {
+  const subtitleVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.4, ease: "easeOut" }
+      transition: { duration: 0.4 }
     }
   };
 
