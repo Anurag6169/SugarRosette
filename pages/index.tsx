@@ -1,6 +1,7 @@
 // Sugar Rosette Home Page
 import React from 'react';
 import TrainCarousel from '@/components/TrainCarousel';
+import Featured from '@/components/Featured';
 import styles from '@/styles/Home.module.css';
 
 // Sample train carousel images - in production, these would be actual product images
@@ -50,6 +51,9 @@ export default function Home() {
           showArrows={true}
         />
       </section>
+
+      {/* Featured Collection Section */}
+      <Featured />
 
       {/* Hero Section */}
       <section className={styles.hero}>

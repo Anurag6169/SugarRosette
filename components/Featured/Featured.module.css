@@ -1,0 +1,423 @@
+/* Featured Collection Section */
+
+.section {
+  padding: 56px 0 72px;
+  background: var(--sr-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(247, 185, 200, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(236, 113, 145, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--sr-space-xl);
+  position: relative;
+  z-index: 1;
+}
+
+/* Desktop: Reduce container padding for tighter layout */
+@media (min-width: 1024px) {
+  .section {
+    padding: 48px 0 64px;
+  }
+  
+  .container {
+    padding: 0 var(--sr-space-lg);
+  }
+  
+  .header {
+    margin-bottom: 40px;
+  }
+}
+
+/* Section Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--sr-space-sm);
+  color: var(--sr-ganache);
+  letter-spacing: -0.02em;
+}
+
+.sectionSubtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--sr-cocoa);
+  opacity: 0.8;
+  margin: 0;
+}
+
+.viewAllLink {
+  color: var(--sr-rosette);
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color var(--sr-transition-fast);
+  padding: var(--sr-space-sm) 0;
+}
+
+.viewAllLink:hover {
+  color: var(--sr-berry);
+}
+
+.viewAllLink:focus-visible {
+  outline: 3px solid var(--sr-berry);
+  outline-offset: 2px;
+  border-radius: var(--sr-radius-sm);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+}
+
+/* Card Link */
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.cardLink:focus-visible {
+  outline: 3px solid var(--sr-berry);
+  outline-offset: 3px;
+  border-radius: 20px;
+}
+
+/* Card */
+.card {
+  position: relative;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid var(--sr-border-subtle);
+  background: var(--sr-surface);
+  background-image: linear-gradient(180deg, rgba(247, 185, 200, 0.06), transparent);
+  box-shadow: 0 12px 28px rgba(236, 113, 145, 0.08);
+  box-shadow: 
+    0 12px 28px rgba(236, 113, 145, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Shimmer effect */
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Accent Bar */
+.accentBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(236, 113, 145, 0.6), rgba(247, 185, 200, 0.4), transparent);
+  transform-origin: left;
+  z-index: 2;
+}
+
+/* Image Area */
+.imageArea {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cardImage {
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--sr-transition-normal);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(transparent, rgba(0, 0, 0, 0.08));
+  pointer-events: none;
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--sr-rosette);
+  border-radius: 50%;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.particle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--sr-rosette);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.1;
+  }
+}
+
+/* Category Tag */
+.categoryTag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: white;
+  color: var(--sr-rosette);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(236, 113, 145, 0.2);
+  z-index: 3;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Content Area */
+.contentArea {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sr-ganache);
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.cardDescription {
+  font-size: 16px;
+  color: var(--sr-milk);
+  opacity: 0.85;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* CTA Button */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--sr-rosette);
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 24px;
+  border-radius: 24px;
+  transition: all var(--sr-transition-fast);
+  align-self: flex-start;
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
+}
+
+.arrowIcon {
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+/* Responsive Design */
+
+/* Tablet (≥640px) */
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .imageArea {
+    aspect-ratio: 4/3;
+  }
+}
+
+/* Desktop (≥1024px) */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .imageArea {
+    aspect-ratio: 4/3;
+  }
+  
+  .contentArea {
+    padding: 24px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 639px) {
+  .section {
+    padding: 48px 0 64px;
+  }
+  
+  .container {
+    padding: 0 var(--sr-space-lg);
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sr-space-md);
+    margin-bottom: 40px;
+  }
+  
+  .grid {
+    gap: 20px;
+  }
+  
+  .contentArea {
+    padding: 20px;
+  }
+  
+  .categoryTag {
+    top: 12px;
+    left: 12px;
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .card.revealed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .cardLink:hover .card {
+    transform: none;
+  }
+  
+  .cardLink:hover .cardImage {
+    transform: none;
+  }
+  
+  .viewAllLink {
+    transition: none;
+  }
+  
+  .ctaButton {
+    transition: none;
+  }
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid var(--sr-ganache);
+  }
+  
+  .categoryTag {
+    background: var(--sr-surface);
+    border: 1px solid var(--sr-rosette);
+  }
+}
