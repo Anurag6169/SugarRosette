@@ -1,0 +1,330 @@
+/* TrainCarousel - Modern continuous scrolling carousel */
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0; /* Remove border radius for edge-to-edge */
+  background: var(--sr-surface);
+  background-image: linear-gradient(180deg, rgba(247, 185, 200, 0.05), transparent);
+  /* Subtle inset highlight */
+  box-shadow: 
+    0 10px 24px rgba(236, 113, 145, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  /* Container height equals tile width for perfect squares */
+  height: calc(min(33.333vw, 480px));
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(-50vw + 50%); /* Center and stretch to viewport edges */
+  margin-right: calc(-50vw + 50%);
+}
+
+/* Track with discrete navigation */
+.track {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+/* Smooth transitions for all interactions */
+.carousel .track {
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Individual carousel item */
+.item {
+  flex: 0 0 auto;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  /* Responsive tile sizing - ensure proper width calculation */
+  width: calc(min(33.333vw, 480px));
+  height: 100%;
+  /* No padding, border, or gap */
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: calc(min(33.333vw, 480px));
+}
+
+/* Image styling */
+.img {
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0; /* No border radius on individual images */
+}
+
+/* Link wrapper */
+.link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link:focus-visible {
+  outline: 3px solid var(--sr-berry);
+  outline-offset: 2px;
+  border-radius: 0;
+}
+
+/* Navigation Controls */
+.arrowButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: var(--sr-blush);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+  color: var(--sr-ganache);
+  opacity: 0.9;
+  box-shadow: 0 4px 12px rgba(236, 113, 145, 0.15);
+}
+
+.arrowButton:hover {
+  background: var(--sr-rosette);
+  color: white;
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(236, 113, 145, 0.25);
+}
+
+.arrowButton:active {
+  transform: translateY(-50%) scale(0.95);
+  transition: transform 100ms ease;
+}
+
+.arrowButton:focus-visible {
+  outline: 3px solid var(--sr-berry);
+  outline-offset: 2px;
+}
+
+.arrowButton:first-of-type {
+  left: 16px;
+}
+
+.arrowButton:last-of-type {
+  right: 16px;
+}
+
+/* Pagination Dots */
+.dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sr-sugar-pink);
+  opacity: 0.6;
+  border: none;
+  cursor: pointer;
+  transition: all var(--sr-transition-fast);
+}
+
+.dot:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
+}
+
+.dot.activeDot {
+  background: var(--sr-rosette);
+  opacity: 1;
+}
+
+.dot:focus-visible {
+  outline: 3px solid var(--sr-berry);
+  outline-offset: 2px;
+}
+
+/* Auto-scroll indicator */
+.autoScrollIndicator {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.autoScrollDot {
+  width: 8px;
+  height: 8px;
+  background: var(--sr-rosette);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  opacity: 0.8;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+}
+
+/* Discrete navigation - no keyframes needed */
+
+/* Tablet breakpoint (≥640px and <1024px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .carousel {
+    height: 50vw;
+    max-height: 400px;
+  }
+  
+  .item {
+    width: 50vw;
+    min-width: 50vw;
+  }
+  
+  .dots {
+    bottom: 20px;
+  }
+}
+
+/* Mobile breakpoint (<640px) */
+@media (max-width: 639px) {
+  .carousel {
+    height: 100vw;
+    max-height: 350px;
+    /* Keep edge-to-edge on mobile */
+    touch-action: pan-x; /* Allow horizontal panning */
+  }
+  
+  .item {
+    width: 100vw;
+    min-width: 100vw;
+  }
+  
+  .arrowButton {
+    width: 44px;
+    height: 44px;
+    /* Better touch targets for mobile */
+    touch-action: manipulation; /* Prevent double-tap zoom */
+  }
+  
+  .arrowButton:first-of-type {
+    left: 16px;
+  }
+  
+  .arrowButton:last-of-type {
+    right: 16px;
+  }
+  
+  /* Show dots on mobile but smaller */
+  .dots {
+    display: flex;
+    bottom: 12px;
+  }
+  
+  .dot {
+    width: 6px;
+    height: 6px;
+    touch-action: manipulation; /* Prevent double-tap zoom */
+  }
+  
+  /* Faster transitions on mobile for better responsiveness */
+  .track {
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Auto-scroll indicator on mobile */
+  .autoScrollIndicator {
+    top: 12px;
+    right: 12px;
+  }
+  
+  .autoScrollDot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Large desktop (≥1440px) - limit max tile size */
+@media (min-width: 1440px) {
+  .carousel {
+    height: 480px;
+  }
+  
+  .item {
+    width: 480px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    transition: transform 200ms ease;
+  }
+  
+  .arrowButton:hover {
+    transform: translateY(-50%);
+  }
+  
+  .dot:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .carousel {
+    box-shadow: 
+      0 10px 24px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  
+  .arrowButton {
+    border: 2px solid var(--sr-ganache);
+  }
+  
+  .dot {
+    border: 1px solid var(--sr-ganache);
+  }
+}
+
+/* Focus management for keyboard navigation */
+.carousel:focus-within {
+  outline: 3px solid var(--sr-berry);
+  outline-offset: 2px;
+}
+
+/* Ensure proper stacking context */
+.carousel {
+  isolation: isolate;
+}
+
+/* Performance optimizations */
+.track {
+  contain: layout style paint;
+}
+
+.item {
+  contain: layout style paint;
+}
+
+.img {
+  will-change: transform;
+}
