@@ -220,6 +220,8 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({
           >
             {description}
           </motion.p>
+              {/* Meta row (kept for alignment; can include rating/price later) */}
+              <div className={styles.metaRow} aria-hidden="true" />
           <motion.div 
             className={styles.ctaButton}
             initial={{ opacity: 0, scale: 0.8 }}

@@ -1,14 +1,15 @@
+"use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
 
   const navLinks = [
     { href: '/menu', label: 'Menu' },
@@ -60,23 +61,15 @@ const Navbar: React.FC = () => {
   // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [router.asPath]);
+  }, [pathname]);
 
   // Handle route loading
   useEffect(() => {
-    const handleStart = () => setIsLoading(true);
-    const handleComplete = () => setIsLoading(false);
-
-    router.events.on('routeChangeStart', handleStart);
-    router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
-
-    return () => {
-      router.events.off('routeChangeStart', handleStart);
-      router.events.off('routeChangeComplete', handleComplete);
-      router.events.off('routeChangeError', handleComplete);
-    };
-  }, [router.events]);
+    // set a brief loading state on pathname change
+    setIsLoading(true);
+    const t = setTimeout(() => setIsLoading(false), 200);
+    return () => clearTimeout(t);
+  }, [pathname]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -87,7 +80,7 @@ const Navbar: React.FC = () => {
   };
 
   const isActiveLink = (href: string) => {
-    return router.asPath === href;
+    return pathname === href;
   };
 
   return (

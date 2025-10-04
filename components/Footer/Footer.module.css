@@ -1,0 +1,101 @@
+.footer {
+  background: var(--sr-ganache);
+  color: var(--sr-surface);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--sr-space-lg);
+}
+
+.serviceStrip {
+  border-bottom: 1px solid var(--sr-border-subtle);
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+@media (min-width: 640px) {
+  .serviceGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.serviceIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--sr-rosette) 18%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.serviceTitle { font-size: 0.9rem; font-weight: 600; }
+.serviceSub { font-size: 0.8rem; opacity: 0.8; }
+
+.main {
+  padding: 48px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.brandTitle {
+  font-family: var(--font-display);
+  color: var(--sr-caramel);
+  font-size: 1.6rem;
+  margin: 0 0 12px 0;
+}
+
+.brandText { color: color-mix(in oklab, var(--sr-surface) 85%, transparent); font-size: 0.9rem; line-height: 1.6; }
+
+.socials { display: flex; gap: 12px; margin-top: 12px; }
+.socialBtn {
+  width: 40px; height: 40px; border-radius: 9999px;
+  background: color-mix(in oklab, var(--sr-caramel) 10%, transparent);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform var(--sr-transition-fast), background var(--sr-transition-fast);
+}
+.socialBtn:hover { transform: translateY(-2px); background: color-mix(in oklab, var(--sr-caramel) 20%, transparent); }
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid color-mix(in oklab, var(--sr-caramel) 20%, transparent);
+}
+
+.link { color: color-mix(in oklab, var(--sr-surface) 85%, transparent); font-size: 0.9rem; display: block; margin-bottom: 10px; transition: color var(--sr-transition-fast), transform var(--sr-transition-fast); }
+.link:hover { color: var(--sr-caramel); transform: translateY(-2px); }
+
+.contactRow { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+.contactText { color: color-mix(in oklab, var(--sr-surface) 85%, transparent); font-size: 0.9rem; }
+
+.bottomBar { border-top: 1px solid var(--sr-border-subtle); }
+.bottomInner { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 16px 0; flex-wrap: wrap; }
+.muted { color: color-mix(in oklab, var(--sr-surface) 60%, transparent); font-size: 0.9rem; }
+
