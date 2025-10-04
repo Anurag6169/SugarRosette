@@ -60,7 +60,108 @@
 .bullets { margin: var(--sr-space-md) 0; color: var(--sr-cocoa); }
 .bullets li { margin-bottom: 6px; }
 
-.ctaRow { display: flex; gap: 10px; margin-top: var(--sr-space-md); }
+.ctaRow { 
+  display: flex; 
+  flex-direction: column;
+  gap: 12px; 
+  margin-top: var(--sr-space-lg); 
+}
+
+/* Buy Now Button */
+.btnBuyNow {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 28px;
+  border: none;
+  background: var(--sr-rosette);
+  color: white;
+  cursor: pointer;
+  transition: all var(--sr-transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(229, 92, 127, 0.25);
+}
+
+.btnBuyNow:hover {
+  background: var(--sr-berry);
+  box-shadow: 0 6px 20px rgba(229, 92, 127, 0.35);
+  transform: translateY(-2px);
+}
+
+.btnBuyNow:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(229, 92, 127, 0.25);
+}
+
+.btnBuyNow svg {
+  flex-shrink: 0;
+}
+
+/* WhatsApp Button */
+.btnWhatsApp {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 24px;
+  border: 2px solid #25D366;
+  background: white;
+  color: #25D366;
+  cursor: pointer;
+  transition: all var(--sr-transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btnWhatsApp:hover {
+  background: #25D366;
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  transform: translateY(-2px);
+}
+
+.btnWhatsApp:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+}
+
+.btnWhatsApp svg {
+  flex-shrink: 0;
+}
+
+/* Trust Badges */
+.trustBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: var(--sr-space-md);
+  padding-top: var(--sr-space-md);
+  border-top: 1px solid var(--sr-border-subtle);
+}
+
+.trustBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sr-cocoa);
+  opacity: 0.85;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.trustBadge svg {
+  color: var(--sr-rosette);
+  flex-shrink: 0;
+}
+
 .btn { 
   font-family: var(--font-ui);
   padding: 12px 16px; border-radius: 9999px; border: 1px solid var(--sr-border-subtle);
@@ -248,10 +349,24 @@
   overflow: hidden;
 }
 
+/* Responsive Button Layout */
+@media (min-width: 640px) {
+  .ctaRow {
+    flex-direction: row;
+  }
+  
+  .btnBuyNow,
+  .btnWhatsApp {
+    flex: 1;
+  }
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .relatedCard,
-  .relatedImage {
+  .relatedImage,
+  .btnBuyNow,
+  .btnWhatsApp {
     transition: none;
   }
   
@@ -260,6 +375,11 @@
   }
   
   .relatedCard:hover .relatedImage {
+    transform: none;
+  }
+  
+  .btnBuyNow:hover,
+  .btnWhatsApp:hover {
     transform: none;
   }
 }
