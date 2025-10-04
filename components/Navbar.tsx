@@ -9,6 +9,8 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
 
   const navLinks = [
@@ -83,6 +85,13 @@ const Navbar: React.FC = () => {
     return pathname === href;
   };
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      window.location.href = `/products?search=${encodeURIComponent(searchQuery.trim())}`;
+    }
+  };
+
   return (
     <>
       <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
@@ -95,13 +104,31 @@ const Navbar: React.FC = () => {
                 <Image
                   src="/logo/Sugar-Rosette-Logo.jpg"
                   alt="Sugar Rosette Logo"
-                  width={50}
-                  height={50}
+                  width={60}
+                  height={60}
                   className={styles.logo}
                 />
               </div>
             </div>
           </Link>
+
+          {/* Search Bar - Desktop */}
+          <form className={styles.searchForm} onSubmit={handleSearch}>
+            <div className={styles.searchBar}>
+              <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input
+                type="text"
+                className={styles.searchInput}
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                aria-label="Search products"
+              />
+            </div>
+          </form>
 
           {/* Desktop Navigation */}
           <nav className={styles.desktopNav} aria-label="Primary">
@@ -117,21 +144,63 @@ const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className={styles.menuButton}
-            onClick={toggleMenu}
-            aria-label="Toggle navigation menu"
-            aria-haspopup="true"
-            aria-expanded={isMenuOpen}
-          >
-            <span className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </button>
+          {/* Mobile Actions */}
+          <div className={styles.mobileActions}>
+            <button
+              className={styles.searchButton}
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              aria-label="Toggle search"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+            </button>
+            
+            <button
+              className={styles.menuButton}
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
+              aria-haspopup="true"
+              aria-expanded={isMenuOpen}
+            >
+              <span className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Search Bar */}
+        {isSearchOpen && (
+          <div className={styles.mobileSearchBar}>
+            <form onSubmit={handleSearch} className={styles.mobileSearchForm}>
+              <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input
+                type="text"
+                className={styles.searchInput}
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                autoFocus
+                aria-label="Search products"
+              />
+              <button
+                type="button"
+                className={styles.closeSearchButton}
+                onClick={() => setIsSearchOpen(false)}
+                aria-label="Close search"
+              >
+                ✕
+              </button>
+            </form>
+          </div>
+        )}
       </header>
 
       {/* Mobile Off-canvas Menu */}

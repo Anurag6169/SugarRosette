@@ -14,6 +14,7 @@ export default function ProductsFilters() {
   const currentCategory = searchParams.get('category') || 'all';
   const currentFlavor = searchParams.get('flavor') || 'all';
   const currentSort = searchParams.get('sort') || 'featured';
+  const searchQuery = searchParams.get('search') || '';
 
   const updateFilters = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -31,7 +32,13 @@ export default function ProductsFilters() {
     router.push('/products');
   };
 
-  const hasActiveFilters = currentCategory !== 'all' || currentFlavor !== 'all' || currentSort !== 'featured';
+  const clearSearch = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete('search');
+    router.push(`/products?${params.toString()}`);
+  };
+
+  const hasActiveFilters = currentCategory !== 'all' || currentFlavor !== 'all' || currentSort !== 'featured' || searchQuery !== '';
 
   return (
     <section className={styles.filtersSection}>
@@ -51,6 +58,20 @@ export default function ProductsFilters() {
 
         {/* Filters */}
         <div className={`${styles.filters} ${isFiltersOpen ? styles.filtersOpen : ''}`}>
+          {/* Search Query Display */}
+          {searchQuery && (
+            <div className={styles.searchQueryChip}>
+              <span>Searching for: <strong>{searchQuery}</strong></span>
+              <button 
+                onClick={clearSearch}
+                className={styles.clearSearchButton}
+                aria-label="Clear search"
+              >
+                ✕
+              </button>
+            </div>
+          )}
+
           {/* Category Filter */}
           <div className={styles.filterGroup}>
             <label className={styles.filterLabel}>Category</label>

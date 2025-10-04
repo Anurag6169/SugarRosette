@@ -12,9 +12,23 @@ export default function ProductsGrid() {
   const category = searchParams.get('category') || 'all';
   const flavor = searchParams.get('flavor') || 'all';
   const sort = searchParams.get('sort') || 'featured';
+  const searchQuery = searchParams.get('search') || '';
 
   // Filter products
   let filteredProducts = products.filter((product) => {
+    // Search filter
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      const titleMatch = product.title.toLowerCase().includes(query);
+      const descMatch = product.shortDesc.toLowerCase().includes(query);
+      const tagMatch = product.tags.some(tag => tag.toLowerCase().includes(query));
+      
+      if (!titleMatch && !descMatch && !tagMatch) {
+        return false;
+      }
+    }
+    
+    // Category filter
     const categoryMatch = category === 'all' || product.tags.some(tag => tag.toLowerCase() === category.toLowerCase());
     const flavorMatch = flavor === 'all' || product.flavors?.some(f => f.toLowerCase() === flavor.toLowerCase());
     
