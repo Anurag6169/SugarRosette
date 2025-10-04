@@ -2,8 +2,7 @@ import React from "react";
 import products from "../../../../data/products";
 import Gallery from "../../../../components/PDP/Gallery";
 import Summary from "../../../../components/PDP/Summary";
-import Details from "../../../../components/PDP/Details";
-import StickyBar from "../../../../components/PDP/StickyBar";
+import RelatedProducts from "../../../../components/PDP/RelatedProducts";
 import styles from "../../../../components/PDP/PDP.module.css";
 
 export const revalidate = 1800;
@@ -34,21 +33,20 @@ export default async function ProductPage({ params }: { params: { slug: string }
         <Summary
           title={product.title}
           shortDesc={product.shortDesc}
+          longDesc={product.longDesc}
+          contents={product.contents}
+          allergens={product.allergens}
+          shelfLife={product.shelfLife}
           tags={product.tags}
           customizable={product.customizable}
           leadTime={product.leadTime}
         />
       </div>
+      
+      {/* Related Products Section */}
       <div className={styles.wrap}>
-        <Details
-          longDesc={product.longDesc}
-          contents={product.contents}
-          allergens={product.allergens}
-          shelfLife={product.shelfLife}
-          delivery={product.leadTime}
-        />
+        <RelatedProducts products={products} currentProductId={product.id} />
       </div>
-      {/* Sticky add-to-cart removed per requirements */}
     </main>
   );
 }
