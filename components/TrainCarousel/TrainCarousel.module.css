@@ -4,12 +4,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 0; /* Remove border radius for edge-to-edge */
-  background: var(--sr-surface);
-  background-image: linear-gradient(180deg, rgba(255, 182, 193, 0.08), rgba(255, 209, 220, 0.05), transparent);
-  /* Enhanced bubbly pink shadows */
-  box-shadow: 
-    0 10px 24px rgba(255, 182, 193, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: transparent; /* Background: transparent per premium brief */
+  box-shadow: var(--sr-shadow-low);
   /* Container height equals tile width for perfect squares */
   height: calc(min(33.333vw, 480px));
   width: 100vw; /* Full viewport width */
@@ -77,7 +73,7 @@
   transform: translateY(-50%);
   width: 48px;
   height: 48px;
-  background: var(--sr-bubble-pink);
+  background: var(--sr-blush);
   border: none;
   border-radius: 50%;
   display: flex;
@@ -86,17 +82,17 @@
   cursor: pointer;
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 3;
-  color: var(--sr-rosette);
+  color: var(--sr-ganache);
   opacity: 0.9;
-  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.2);
+  box-shadow: var(--sr-shadow-low);
 }
 
 .arrowButton:hover {
   background: var(--sr-rosette);
-  color: white;
+  color: #fff;
   opacity: 1;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3);
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: var(--sr-shadow-med);
 }
 
 .arrowButton:active {

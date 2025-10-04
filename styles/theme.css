@@ -1,28 +1,43 @@
 :root {
-  /* Sugar Rosette Brand Colors - Enhanced with Bubbly Pink */
-  --sr-bg: #FDF2F7;
-  --sr-blush: #FFE8F0;
-  --sr-bubble-pink: #FFB6C8;
-  --sr-sugar-pink: #F7B9C8;
-  --sr-rosette: #EC7191;
-  --sr-berry: #B83A56;
-  --sr-cocoa: #6B4A3A;
-  --sr-ganache: #3E2A23;
-  --sr-milk: #8A5E49;
-  --sr-caramel: #D9A269;
-  --sr-cotton-candy: #FFC0CB;
-  --sr-pink-mist: #FFD1DC;
-  
-  /* Additional utility colors */
-  --sr-surface: #FFFFFF;
+  /* Sugar Rosette Brand Colors - Premium Refined */
+  --sr-bg: #FBF3EA; /* cream backdrop (unchanged) */
+  --sr-surface: #FFFFFF; /* cards & surfaces (unchanged) */
   --sr-surface-warm: #FEFCFA;
-  --sr-border-subtle: #F0D6E1;
-  
-  /* Enhanced bubbly pink design tokens */
-  --sr-shadow-soft: 0 6px 18px rgba(255, 182, 193, 0.12);
-  --sr-shadow-elevated: 0 8px 24px rgba(255, 182, 193, 0.18);
-  --sr-shadow-bubbly: 0 12px 32px rgba(255, 182, 193, 0.15);
-  
+
+  /* Core pinks (refined) */
+  --sr-blush: #FFE9EE; /* softened */
+  --sr-sugar-pink: #F5B3C3; /* smoother */
+  --sr-rosette: #E55C7F; /* richer CTA */
+  --sr-berry: #A8344D; /* wine-like depth */
+
+  /* Neutrals / text */
+  --sr-cocoa: #6B4A3A; /* body text */
+  --sr-ganache: #3E2A23; /* headings */
+  --sr-milk: #8A5E49; /* secondary text */
+  --sr-caramel: #D9A269; /* accent (unchanged) */
+
+  /* Tonal ramp for overlays */
+  --sr-rose-10: rgba(229, 92, 127, 0.10);
+  --sr-rose-16: rgba(229, 92, 127, 0.16);
+  --sr-rose-22: rgba(229, 92, 127, 0.22);
+
+  /* Border */
+  --sr-border-subtle: #EDDAD7;
+
+  /* Shadow presets */
+  --sr-shadow-low: 0 8px 20px rgba(168, 52, 77, 0.06);
+  --sr-shadow-med: 0 12px 28px rgba(168, 52, 77, 0.10);
+  --sr-shadow-high: 0 18px 36px rgba(168, 52, 77, 0.12);
+
+  /* Typography variables (populated via next/font) */
+  --font-display: 'Fraunces', serif;
+  --font-ui: 'Inter', ui-sans-serif;
+
+  /* Motion */
+  --sr-transition-fast: 160ms ease-out;
+  --sr-transition-normal: 200ms ease-out;
+  --sr-transition-slow: 300ms ease-out;
+
   /* Spacing */
   --sr-space-xs: 0.25rem;
   --sr-space-sm: 0.5rem;
@@ -30,18 +45,13 @@
   --sr-space-lg: 1.5rem;
   --sr-space-xl: 2rem;
   --sr-space-2xl: 3rem;
-  
+
   /* Border radius */
   --sr-radius-sm: 6px;
   --sr-radius-md: 8px;
   --sr-radius-lg: 12px;
   --sr-radius-xl: 16px;
   --sr-radius-full: 9999px;
-  
-  /* Transitions */
-  --sr-transition-fast: 150ms ease;
-  --sr-transition-normal: 200ms ease;
-  --sr-transition-slow: 300ms ease;
 }
 
 /* Base styles */
@@ -55,7 +65,20 @@ body {
   color: var(--sr-cocoa);
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-ui);
+  font-feature-settings: 'ss01', 'cv01';
+  font-synthesis: none;
+}
+
+/* Headings use display font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--sr-ganache);
+}
+
+/* Soft section wash utility */
+.sr-section-wash {
+  background: linear-gradient(180deg, rgba(245, 179, 195, 0.05) 0%, transparent 60%);
 }
 
 /* Link styles */

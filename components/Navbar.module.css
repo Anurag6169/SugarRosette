@@ -80,15 +80,12 @@
 }
 
 .brandName {
+  font-family: var(--font-display);
   font-weight: 700;
   color: var(--sr-ganache);
-  font-size: 16px;
+  font-size: 17px;
   letter-spacing: -0.01em;
-  background: linear-gradient(135deg, var(--sr-rosette) 0%, var(--sr-cocoa) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 /* Minimalist Desktop Navigation */
@@ -109,16 +106,18 @@
   border-radius: 20px;
   background: var(--sr-blush);
   color: var(--sr-ganache);
+  font-family: var(--font-ui);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 15px;
+  letter-spacing: 0.01em;
   text-decoration: none;
   transition: all 160ms ease;
   display: block;
 }
 
 .navLink:hover {
-  background: var(--sr-rosette);
-  color: white;
+  background: var(--sr-sugar-pink);
+  color: var(--sr-ganache);
 }
 
 .navLink.active {
