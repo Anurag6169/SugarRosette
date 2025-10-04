@@ -55,76 +55,7 @@ export default function Home() {
       {/* Featured Collection Section */}
       <Featured />
 
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Welcome to Sugar Rosette</h1>
-          <p className={styles.heroSubtitle}>
-            Artisan chocolates crafted with love, delivered with elegance
-          </p>
-        </div>
-      </section>
-
-      {/* Featured Collections Section */}
-      <section className={styles.featuredSection}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>Featured Collections</h2>
-          <p className={styles.sectionSubtitle}>
-            Discover our most popular chocolate selections
-          </p>
-        </div>
-        
-        <div className={styles.collectionsGrid}>
-          <div className={styles.collectionCard}>
-            <h3>Artisan Truffles</h3>
-            <p>Hand-crafted with premium ingredients</p>
-          </div>
-          <div className={styles.collectionCard}>
-            <h3>Gift Hampers</h3>
-            <p>Perfect for any celebration</p>
-          </div>
-          <div className={styles.collectionCard}>
-            <h3>Seasonal Specials</h3>
-            <p>Limited edition collections</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Demo Section */}
-      <section className={styles.demoSection}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>Customizable Options</h2>
-          <p className={styles.sectionSubtitle}>
-            Configure the carousel to match your needs
-          </p>
-        </div>
-        
-        <div className={styles.carouselGrid}>
-          {/* Fast scrolling version */}
-          <div className={styles.carouselDemo}>
-            <h3 className={styles.demoTitle}>Fast Scroll (1s per image)</h3>
-            <TrainCarousel 
-              images={trainImages.slice(0, 4)}
-              speedMs={4000}
-              pauseOnHover={true}
-              showDots={false}
-              showArrows={true}
-            />
-          </div>
-
-          {/* Minimal controls version */}
-          <div className={styles.carouselDemo}>
-            <h3 className={styles.demoTitle}>Minimal Controls</h3>
-            <TrainCarousel 
-              images={trainImages.slice(2, 6)}
-              speedMs={4000}
-              pauseOnHover={false}
-              showDots={true}
-              showArrows={false}
-            />
-          </div>
-        </div>
-      </section>
+      {/* Removed extra demo and duplicate sections below Featured */}
     </main>
   );
 }
