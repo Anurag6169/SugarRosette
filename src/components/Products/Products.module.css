@@ -1,0 +1,447 @@
+/* Products Page Styles - Skyscanner-inspired card hierarchy */
+
+.page {
+  min-height: 100vh;
+  background: var(--sr-bg);
+}
+
+/* Hero Section */
+.hero {
+  padding: 120px var(--sr-space-xl) 48px;
+  background: linear-gradient(180deg, var(--sr-surface) 0%, var(--sr-blush) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, var(--sr-rose-10) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, var(--sr-rose-16) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.heroInner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--sr-ganache);
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--sr-space-md) 0;
+}
+
+.heroSubtitle {
+  font-family: var(--font-ui);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.5;
+  color: var(--sr-cocoa);
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Filters Section */
+.filtersSection {
+  position: sticky;
+  top: 72px;
+  z-index: 10;
+  background: var(--sr-surface);
+  border-bottom: 1px solid var(--sr-border-subtle);
+  box-shadow: 0 2px 8px rgba(168,52,77,0.04);
+}
+
+.filtersContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--sr-space-lg) var(--sr-space-lg);
+}
+
+/* Mobile Filter Toggle */
+.filterToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--sr-blush);
+  border: 1px solid var(--sr-border-subtle);
+  border-radius: 12px;
+  color: var(--sr-ganache);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all var(--sr-transition-fast);
+}
+
+.filterToggle:hover {
+  background: var(--sr-sugar-pink);
+  color: white;
+}
+
+.filterBadge {
+  margin-left: auto;
+  color: var(--sr-rosette);
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* Filters */
+.filters {
+  display: none;
+  flex-direction: column;
+  gap: var(--sr-space-lg);
+  margin-top: var(--sr-space-lg);
+  padding-top: var(--sr-space-lg);
+  border-top: 1px solid var(--sr-border-subtle);
+}
+
+.filtersOpen {
+  display: flex;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sr-space-sm);
+}
+
+.filterLabel {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--sr-ganache);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.filterChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 8px 16px;
+  background: var(--sr-blush);
+  border: 1px solid var(--sr-border-subtle);
+  border-radius: 20px;
+  color: var(--sr-ganache);
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--sr-transition-fast);
+}
+
+.chip:hover {
+  background: var(--sr-sugar-pink);
+  color: white;
+  border-color: var(--sr-sugar-pink);
+}
+
+.chipActive {
+  background: var(--sr-rosette);
+  color: white;
+  border-color: var(--sr-rosette);
+  font-weight: 600;
+}
+
+.sortSelect {
+  padding: 10px 16px;
+  background: var(--sr-surface);
+  border: 1px solid var(--sr-border-subtle);
+  border-radius: 12px;
+  color: var(--sr-ganache);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all var(--sr-transition-fast);
+  max-width: 240px;
+}
+
+.sortSelect:focus {
+  outline: none;
+  border-color: var(--sr-rosette);
+  box-shadow: 0 0 0 3px var(--sr-rose-10);
+}
+
+.resetButton {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--sr-rosette);
+  border-radius: 20px;
+  color: var(--sr-rosette);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--sr-transition-fast);
+  align-self: flex-start;
+}
+
+.resetButton:hover {
+  background: var(--sr-rosette);
+  color: white;
+}
+
+/* Desktop Filters */
+@media (min-width: 768px) {
+  .filterToggle {
+    display: none;
+  }
+  
+  .filters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  
+  .filterGroup {
+    flex: 0 0 auto;
+  }
+  
+  .resetButton {
+    margin-left: auto;
+  }
+}
+
+/* Grid Wrapper */
+.gridWrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 48px var(--sr-space-lg) 72px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card - Skyscanner Hierarchy */
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card {
+  background: var(--sr-surface);
+  background-image: linear-gradient(180deg, rgba(245,179,195,0.04) 0%, transparent 60%);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all var(--sr-transition-normal);
+  box-shadow: var(--sr-shadow-low);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  box-shadow: var(--sr-shadow-med);
+  transform: translateY(-4px);
+}
+
+.card:focus-within {
+  outline: 3px solid var(--sr-berry);
+  outline-offset: 2px;
+}
+
+/* Card Image */
+.cardImage {
+  position: relative;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: contain;
+  object-position: center;
+  transition: transform var(--sr-transition-normal);
+}
+
+.card:hover .image {
+  transform: scale(1.02);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(transparent, var(--sr-rose-10));
+  pointer-events: none;
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 2;
+  box-shadow: var(--sr-shadow-low);
+}
+
+.badgeBestseller {
+  background: var(--sr-rosette);
+  color: white;
+}
+
+.badgeNew {
+  background: var(--sr-sugar-pink);
+  color: white;
+}
+
+.badgeLimited {
+  background: var(--sr-berry);
+  color: white;
+}
+
+.badgeCorporate {
+  background: var(--sr-ganache);
+  color: white;
+}
+
+/* Card Content - Skyscanner Spacing */
+.cardContent {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Title */
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--sr-ganache);
+  margin: 0 0 12px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Description - Supporting Text */
+.cardDescription {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--sr-milk);
+  opacity: 0.9;
+  margin: 0 0 20px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* CTA */
+.cardCta {
+  margin-top: auto;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 24px;
+  background: var(--sr-rosette);
+  color: white;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  border-radius: 24px;
+  transition: all var(--sr-transition-fast);
+  text-align: center;
+}
+
+.card:hover .ctaButton {
+  background: var(--sr-berry);
+  box-shadow: var(--sr-shadow-med);
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 80px var(--sr-space-xl);
+}
+
+.emptyIcon {
+  font-size: 64px;
+  margin-bottom: var(--sr-space-lg);
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--sr-ganache);
+  margin: 0 0 var(--sr-space-sm) 0;
+}
+
+.emptyText {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  color: var(--sr-milk);
+  margin: 0;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image,
+  .chip,
+  .ctaButton {
+    transition: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .card:hover .image {
+    transform: none;
+  }
+}
+

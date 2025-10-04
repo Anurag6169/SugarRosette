@@ -37,14 +37,10 @@ const HamperCard: React.FC<{ hamper: Hamper }> = ({ hamper }) => {
       <div className={styles.cardBody}>
         <h3 id={`title-${hamper.id}`} className={styles.title}>{hamper.title}</h3>
         <p className={styles.desc}>{hamper.shortDesc}</p>
-        <div className={styles.metaRow} aria-hidden="true" />
         <div className={styles.ctaRow}>
-          <Link href={`/product/${hamper.slug}`} className={styles.btn} aria-label={`View details for ${hamper.title}`}>
+          <Link href={`/product/${hamper.slug}`} className={`${styles.btn} ${styles.btnPrimary}`} aria-label={`View details for ${hamper.title}`}>
             View details
           </Link>
-          <button type="button" className={`${styles.btn} ${styles.btnPrimary}`} aria-label={`Add ${hamper.title} to cart`}>
-            Add to cart
-          </button>
         </div>
       </div>
     </article>

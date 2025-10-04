@@ -8,13 +8,13 @@ const Gallery: React.FC<{ images: string[]; title: string }> = ({ images, title 
   const primary = images[active] ?? images[0];
   return (
     <section className={styles.gallery} aria-label="Product media">
-      <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3" }}>
+      <div style={{ position: "relative", width: "100%", aspectRatio: "1 / 1" }}>
         <Image
           src={primary}
           alt={`${title} image ${active + 1}`}
           fill
           sizes="(min-width:1024px) 50vw, 100vw"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "contain" }}
           priority
         />
       </div>
@@ -31,7 +31,7 @@ const Gallery: React.FC<{ images: string[]; title: string }> = ({ images, title 
             >
               <div className={styles.thumb}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" width={64} height={64} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img src={src} alt="" width={64} height={64} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
               </div>
             </button>
           ))}
