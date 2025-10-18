@@ -10,7 +10,7 @@ const trainImages = [
   {
     src: '/hero/slide-1.jpg',
     alt: 'Artisan chocolate collection featuring hand-crafted truffles',
-    href: '/products'
+    href: '/chocolates'
   },
   {
     src: '/hero/slide-2.jpg', 
@@ -30,12 +30,12 @@ const trainImages = [
   {
     src: '/hero/slide-1.jpg',
     alt: 'Signature chocolate boxes perfect for any celebration',
-    href: '/products'
+    href: '/cakes'
   },
   {
     src: '/hero/slide-2.jpg',
     alt: 'Custom chocolate arrangements for weddings and events',
-    href: '/occasions'
+    href: '/bakery'
   }
 ];
 

@@ -17,7 +17,7 @@ const featuredData = [
   {
     key: 'chocolates',
     title: 'Chocolates',
-    href: '/products?filter=chocolates',
+    href: '/chocolates',
     image: '/hero/slide-2.jpg', // Replace with actual chocolate image
     description: 'Handcrafted bites in classic and bold flavors. From rich dark truffles to creamy milk chocolates, each piece is carefully crafted with premium ingredients and artistic flair that delights the senses.',
     category: 'Artisan'
@@ -25,7 +25,7 @@ const featuredData = [
   {
     key: 'cakes',
     title: 'Cakes',
-    href: '/products?filter=cakes',
+    href: '/cakes',
     image: '/hero/slide-1.jpg', // Replace with actual cake image
     description: 'Celebration cakes, fresh and exquisite. Custom-designed cakes for every occasion, from intimate gatherings to grand celebrations. Made daily with love and attention to detail.',
     category: 'Specialty'
@@ -33,7 +33,7 @@ const featuredData = [
   {
     key: 'bakery',
     title: 'Bakery',
-    href: '/products?filter=bakery',
+    href: '/bakery',
     image: '/hero/slide-2.jpg', // Replace with actual bakery image
     description: 'Pastries and bakes for everyday joy. Fresh-baked croissants, artisanal breads, and seasonal treats that bring warmth and comfort to your daily moments with authentic flavors.',
     category: 'Fresh'
@@ -101,7 +101,7 @@ const Featured: React.FC = () => {
           <motion.div
             variants={subtitleVariants}
           >
-            <Link href="/products" className={styles.viewAllLink}>
+            <Link href="/hampers" className={styles.viewAllLink}>
               View all
             </Link>
           </motion.div>

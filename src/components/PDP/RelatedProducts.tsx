@@ -1,21 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Product } from '../../data/products';
+import { Hamper } from '../../data/hampers';
 import styles from './PDP.module.css';
 
 interface RelatedProductsProps {
-  products: Product[];
+  hampers: Hamper[];
   currentProductId: string;
 }
 
-const RelatedProducts: React.FC<RelatedProductsProps> = ({ products, currentProductId }) => {
-  // Filter out current product and limit to 4 related items
-  const relatedProducts = products
-    .filter(p => p.id !== currentProductId)
+const RelatedProducts: React.FC<RelatedProductsProps> = ({ 
+  hampers, 
+  currentProductId
+}) => {
+  // Filter out current hamper and limit to 4 related items
+  const relatedHampers = hampers
+    .filter(h => h.id !== currentProductId)
     .slice(0, 4);
 
-  if (relatedProducts.length === 0) return null;
+  if (relatedHampers.length === 0) return null;
 
   return (
     <section className={styles.relatedSection} aria-labelledby="related-heading">
@@ -26,34 +29,43 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ products, currentProd
       </div>
       
       <div className={styles.relatedGrid}>
-        {relatedProducts.map((product) => {
-          const badge = product.tags.find(tag => 
-            ['Bestseller', 'New', 'Limited', 'Corporate'].includes(tag)
+        {relatedHampers.map((hamper) => {
+          const badge = hamper.tags.find(tag => 
+            ['Bestseller', 'New', 'Limited', 'Corporate', 'Premium', 'Festive'].includes(tag)
           );
+          
+          // Get price display for hampers
+          const lowestPrice = Math.min(...hamper.priceOptions.map(option => option.price));
+          const lowestPriceOption = hamper.priceOptions.find(option => option.price === lowestPrice);
+          const priceDisplay = `Starting from ₹${lowestPrice} (${lowestPriceOption?.pieces} pieces)`;
           
           return (
             <Link 
-              key={product.id}
-              href={`/product/${product.slug}`}
+              key={hamper.id}
+              href={`/product/${hamper.slug}`}
               className={styles.relatedCard}
-              aria-label={`View ${product.title}`}
+              aria-label={`View ${hamper.title}`}
             >
               <article>
                 <div className={styles.relatedImageArea}>
                   <Image
-                    src={product.images[0]}
-                    alt={product.title}
+                    src={hamper.image}
+                    alt={hamper.title}
                     fill
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                     className={styles.relatedImage}
                   />
                   {badge && (
-                    <span className={styles.relatedBadge}>{badge}</span>
+                    <span className={`${styles.relatedBadge} ${
+                      badge === 'Premium' ? styles.premiumBadge : 
+                      badge === 'Festive' ? styles.festiveBadge : ''
+                    }`}>{badge}</span>
                   )}
                 </div>
                 <div className={styles.relatedContent}>
-                  <h3 className={styles.relatedProductTitle}>{product.title}</h3>
-                  <p className={styles.relatedDescription}>{product.shortDesc}</p>
+                  <h3 className={styles.relatedProductTitle}>{hamper.title}</h3>
+                  <p className={styles.relatedDescription}>{hamper.shortDesc}</p>
+                  <div className={styles.relatedPrice}>{priceDisplay}</div>
                 </div>
               </article>
             </Link>

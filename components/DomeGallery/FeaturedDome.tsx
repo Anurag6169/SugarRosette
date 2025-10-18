@@ -4,34 +4,34 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import DomeGallery from './DomeGallery';
-import products from '../../src/data/products';
+import hampers from '../../src/data/hampers';
 import styles from './FeaturedDome.module.css';
 
 const FeaturedDome: React.FC = () => {
   const router = useRouter();
-  const [previewProduct, setPreviewProduct] = useState<typeof products[0] | null>(null);
+  const [previewHamper, setPreviewHamper] = useState<typeof hampers[0] | null>(null);
 
-  // Get product images with alt text and slug for navigation
-  const productImages = products.map(product => ({
-    src: product.images[0],
-    alt: product.title,
-    slug: product.slug
+  // Get hamper images with alt text and slug for navigation
+  const hamperImages = hampers.map(hamper => ({
+    src: hamper.image,
+    alt: hamper.title,
+    slug: hamper.slug
   }));
 
   const handleImageClick = (index: number) => {
-    const product = products[index % products.length];
-    setPreviewProduct(product);
+    const hamper = hampers[index % hampers.length];
+    setPreviewHamper(hamper);
   };
 
   const handlePreviewClick = () => {
-    if (previewProduct) {
-      router.push(`/product/${previewProduct.slug}`);
+    if (previewHamper) {
+      router.push(`/product/${previewHamper.slug}`);
     }
   };
 
   const handleClosePreview = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setPreviewProduct(null);
+    setPreviewHamper(null);
   };
 
   return (
@@ -48,7 +48,7 @@ const FeaturedDome: React.FC = () => {
         {/* Dome Gallery */}
         <div className={styles.domeWrapper}>
           <DomeGallery
-            images={productImages}
+            images={hamperImages}
             fit={0.5}
             fitBasis="auto"
             minRadius={400}
@@ -66,7 +66,7 @@ const FeaturedDome: React.FC = () => {
         </div>
 
         {/* Preview Modal */}
-        {previewProduct && (
+        {previewHamper && (
           <>
             <div className={styles.previewBackdrop} onClick={handleClosePreview} />
             <div className={styles.previewModal} onClick={handlePreviewClick}>
@@ -79,16 +79,16 @@ const FeaturedDome: React.FC = () => {
               </button>
               <div className={styles.previewImage}>
                 <Image
-                  src={previewProduct.images[0]}
-                  alt={previewProduct.title}
+                  src={previewHamper.image}
+                  alt={previewHamper.title}
                   fill
                   sizes="(max-width: 640px) 90vw, 400px"
                   style={{ objectFit: 'contain' }}
                 />
               </div>
               <div className={styles.previewContent}>
-                <h3 className={styles.previewTitle}>{previewProduct.title}</h3>
-                <p className={styles.previewDescription}>{previewProduct.shortDesc}</p>
+                <h3 className={styles.previewTitle}>{previewHamper.title}</h3>
+                <p className={styles.previewDescription}>{previewHamper.shortDesc}</p>
                 <div className={styles.previewCta}>
                   <span className={styles.ctaText}>Click to view details →</span>
                 </div>
@@ -99,8 +99,8 @@ const FeaturedDome: React.FC = () => {
 
         {/* View All Link */}
         <div className={styles.viewAllWrapper}>
-          <a href="/products" className={styles.viewAllButton}>
-            View All Products
+          <a href="/hampers" className={styles.viewAllButton}>
+            View All Hampers
           </a>
         </div>
       </div>

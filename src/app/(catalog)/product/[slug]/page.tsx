@@ -1,51 +1,51 @@
 import React from "react";
-import products from "../../../../data/products";
+import hampers from "../../../../data/hampers";
 import Gallery from "../../../../components/PDP/Gallery";
-import Summary from "../../../../components/PDP/Summary";
+import HamperSummary from "../../../../components/PDP/HamperSummary";
 import RelatedProducts from "../../../../components/PDP/RelatedProducts";
 import styles from "../../../../components/PDP/PDP.module.css";
 
 export const revalidate = 1800;
 
 export async function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  return hampers.map((h) => ({ slug: h.slug }));
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const product = products.find((p) => p.slug === params.slug);
-  if (!product) return { title: "Product | Sugar Rosette" };
+  const hamper = hampers.find((h) => h.slug === params.slug);
+  if (!hamper) return { title: "Hamper | Sugar Rosette" };
   return {
-    title: `${product.title} | Sugar Rosette`,
-    description: product.shortDesc,
+    title: `${hamper.title} | Sugar Rosette`,
+    description: hamper.shortDesc,
   };
 }
 
 export default async function ProductPage({ params }: { params: { slug: string } }) {
-  const product = products.find((p) => p.slug === params.slug);
-  if (!product) return <div className={styles.wrap}><p>Product not found.</p></div>;
+  const hamper = hampers.find((h) => h.slug === params.slug);
+  if (!hamper) return <div className={styles.wrap}><p>Hamper not found.</p></div>;
 
   return (
     <main className={styles.page}>
       <div className={`${styles.wrap} ${styles.layout}`}>
         <div>
-          <Gallery images={product.images} title={product.title} />
+          <Gallery images={[hamper.image]} title={hamper.title} />
         </div>
-        <Summary
-          title={product.title}
-          shortDesc={product.shortDesc}
-          longDesc={product.longDesc}
-          contents={product.contents}
-          allergens={product.allergens}
-          shelfLife={product.shelfLife}
-          tags={product.tags}
-          customizable={product.customizable}
-          leadTime={product.leadTime}
+        <HamperSummary
+          title={hamper.title}
+          shortDesc={hamper.shortDesc}
+          detailedDesc={hamper.detailedDesc}
+          tags={hamper.tags}
+          customizable={hamper.customizable}
+          priceOptions={hamper.priceOptions}
         />
       </div>
       
       {/* Related Products Section */}
       <div className={styles.wrap}>
-        <RelatedProducts products={products} currentProductId={product.id} />
+        <RelatedProducts 
+          hampers={hampers}
+          currentProductId={hamper.id}
+        />
       </div>
     </main>
   );

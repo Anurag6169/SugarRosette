@@ -1,40 +1,69 @@
-const hampers = [
+export type HamperPriceOption = {
+  pieces: number;
+  price: number;
+};
+
+export type Hamper = {
+  id: string;
+  title: string;
+  slug: string;
+  image: string;
+  shortDesc: string;
+  detailedDesc: string;
+  tags: string[];
+  customizable: boolean;
+  priceOptions: HamperPriceOption[];
+};
+
+const hampers: Hamper[] = [
   {
     id: "h1",
-    title: "Rosette Signature Hamper",
-    slug: "rosette-signature",
+    title: "Premium Gift Box",
+    slug: "premium-gift-box",
     image: "/hero/slide-1.jpg",
-    shortDesc: "A curated selection of chocolates and confections.",
+    shortDesc: "A classic collection of handcrafted dark chocolates with nuts and berries",
+    detailedDesc: "Premium Dark Chocolates wrapped in golden foil Filled with Almonds, Sunflower Seeds, Blueberries & Cranberries",
     tags: ["Bestseller"],
     customizable: true,
+    priceOptions: [
+      { pieces: 18, price: 549 },
+      { pieces: 24, price: 749 },
+      { pieces: 12, price: 349 },
+      { pieces: 9, price: 279 }
+    ]
   },
   {
     id: "h2",
-    title: "Blush Celebration Box",
-    slug: "blush-celebration",
+    title: "Luxury Treat Hamper",
+    slug: "luxury-treat-hamper",
     image: "/hero/slide-2.jpg",
-    shortDesc: "Sweet treats for birthdays and special moments.",
-    tags: ["New"],
-    customizable: false,
+    shortDesc: "A refined assortment of our finest dark chocolates enriched with extra nuts and berries",
+    detailedDesc: "Premium Dark Chocolates wrapped in golden foil Filled with more Almonds, Sunflower Seeds, Blueberries & Cranberries",
+    tags: ["Premium"],
+    customizable: true,
+    priceOptions: [
+      { pieces: 18, price: 749 },
+      { pieces: 24, price: 999 },
+      { pieces: 12, price: 479 },
+      { pieces: 9, price: 379 }
+    ]
   },
   {
     id: "h3",
-    title: "Corporate Gourmet Hamper",
-    slug: "corporate-gourmet",
+    title: "Grand Delight Hamper",
+    slug: "grand-delight-hamper",
     image: "/hero/slide-1.jpg",
-    shortDesc: "Elegant assortment ideal for client gifting.",
-    tags: ["Corporate"],
+    shortDesc: "Our premium festive collection featuring Kunafa, Hazelnut, Caramel, and Dry Fruit chocolates",
+    detailedDesc: "Premium Dark Chocolates Collection including Kunafa Chocolates, Hazelnut, Premium dryfruits, & Caramel chocolates",
+    tags: ["Festive", "Premium"],
     customizable: true,
-  },
-  {
-    id: "h4",
-    title: "Limited Festive Curation",
-    slug: "limited-festive",
-    image: "/hero/slide-2.jpg",
-    shortDesc: "Seasonal favorites in premium packaging.",
-    tags: ["Limited"],
-    customizable: false,
-  },
+    priceOptions: [
+      { pieces: 18, price: 999 },
+      { pieces: 24, price: 1249 },
+      { pieces: 12, price: 599 },
+      { pieces: 9, price: 499 }
+    ]
+  }
 ];
 
 export default hampers;

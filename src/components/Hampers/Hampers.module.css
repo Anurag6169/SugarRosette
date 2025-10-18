@@ -343,6 +343,68 @@
   color: #fff;
 }
 
+.badge.premium {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+.badge.festive {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+}
+
+/* Price Range Styles */
+.priceRange {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 8px 0 12px 0;
+}
+
+@media (min-width: 640px) {
+  .priceRange {
+    margin: 12px 0 16px 0;
+  }
+}
+
+.priceLabel {
+  font-size: 11px;
+  color: var(--sr-cocoa);
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+@media (min-width: 640px) {
+  .priceLabel {
+    font-size: 12px;
+  }
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sr-rosette);
+  font-family: var(--font-display);
+}
+
+@media (min-width: 640px) {
+  .price {
+    font-size: 18px;
+  }
+}
+
+.priceUnit {
+  font-size: 10px;
+  color: var(--sr-milk);
+  opacity: 0.8;
+}
+
+@media (min-width: 640px) {
+  .priceUnit {
+    font-size: 11px;
+  }
+}
+
 .skeleton {
   background: linear-gradient(90deg, rgba(255,255,255,0), rgba(245,179,195,0.12), rgba(255,255,255,0));
   animation: shimmer 1.4s infinite;

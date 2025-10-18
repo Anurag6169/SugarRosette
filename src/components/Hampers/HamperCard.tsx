@@ -2,25 +2,20 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Hampers.module.css";
-
-interface Hamper {
-  id: string;
-  title: string;
-  slug: string;
-  image: string;
-  shortDesc: string;
-  tags: string[];
-  customizable?: boolean;
-}
+import { Hamper } from "../../data/hampers";
 
 const HamperCard: React.FC<{ hamper: Hamper }> = ({ hamper }) => {
   const whatsappMessage = `Hi!%20I'd%20like%20to%20purchase%20*${encodeURIComponent(hamper.title)}*%0A%0A${encodeURIComponent(hamper.shortDesc)}`;
+  
+  // Get the lowest price for display
+  const lowestPrice = Math.min(...hamper.priceOptions.map(option => option.price));
+  const lowestPriceOption = hamper.priceOptions.find(option => option.price === lowestPrice);
 
   return (
     <article className={styles.card} aria-labelledby={`title-${hamper.id}`}>
       <div className={styles.badges}>
         {hamper.tags?.slice(0, 3).map((t) => (
-          <span key={t} className={`${styles.badge} ${t === "Bestseller" ? styles.caramel : t === "New" ? styles.rosette : t === "Corporate" ? styles.dark : ""}`}>{t}</span>
+          <span key={t} className={`${styles.badge} ${t === "Bestseller" ? styles.caramel : t === "New" ? styles.rosette : t === "Corporate" ? styles.dark : t === "Premium" ? styles.premium : t === "Festive" ? styles.festive : ""}`}>{t}</span>
         ))}
       </div>
       <Link href={`/product/${hamper.slug}`} aria-label={`View ${hamper.title}`}>
@@ -41,6 +36,14 @@ const HamperCard: React.FC<{ hamper: Hamper }> = ({ hamper }) => {
           <h3 id={`title-${hamper.id}`} className={styles.title}>{hamper.title}</h3>
         </Link>
         <p className={styles.desc}>{hamper.shortDesc}</p>
+        
+        {/* Price Range Display */}
+        <div className={styles.priceRange}>
+          <span className={styles.priceLabel}>Starting from:</span>
+          <span className={styles.price}>₹{lowestPrice}</span>
+          <span className={styles.priceUnit}>/box ({lowestPriceOption?.pieces} pieces)</span>
+        </div>
+        
         <div className={styles.ctaRow}>
           <a 
             href={`https://wa.me/918128995138?text=${whatsappMessage}`}
